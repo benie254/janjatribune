@@ -99,5 +99,15 @@ or
   * run `git commit -m "update remote migrations && redeploy"`
   * run `git push heroku master`
 
+# Just a pointer
+#### You will need to create a new superuser after deployment, in order to access your Admin platform. 
+##### To do so... 
 
+* Run `heroku run bash` in your local terminal. 
+* When the `bash` opens... 
+* Run `python3 manage.py createsuperuser`
+* Follow the prompted steps to create your superuser's username, email, and password. 
+* Once done, run `exit` to exit `heroku bash`
+* You do not need to push anything to heroku, because `heroku bash` creates the connection with your remote repo.
+* You can now sign in to your admin platform on your deployed app.
 ###### Kind regards! Happy hacking! 
