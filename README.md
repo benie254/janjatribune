@@ -20,6 +20,34 @@
 
 * You can then use re_path the same way you would have used url
 
+### Couldn't import Django. Are you sure it's installed and available on your PYTHONPATH environment variable?
+
+    Solution 1:
+
+* On your pc's terminal, run `pip install pipenv`
+
+* Open/reopen your project in your code editor
+
+* Ensure your virtual environment is active. If not...
+
+* run `source yourvirtualenvironment/bin/activate`
+
+* Run `pipenv install django`
+
+* Confirm a successful installation when pipenv creates the files `Pipfile` and `Pipfile.lock`
+
+      Solution 2:
+
+* Delete your virtual environment's folder
+
+* Create a new virtual environment... `run virtualenv venv`
+
+* Run `source venv/bin/activate`
+
+* Leave your project & open your pc's terminal
+
+* Continue with the steps in `solution 1` above.
+
 
 ### django.db.utils.OperationalError: no such table: auth_user
 
