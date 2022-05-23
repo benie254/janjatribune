@@ -1,1 +1,1 @@
-web: gunicorn janjatribune.wsgi --log-file -
+web: gunicorn janjatrib.wsgi --log-file -
