@@ -1,5 +1,5 @@
 ## You May Encounter a Few Errors 
-### When Working with Your First DJango Projection
+### When Working with Your First DJango Project
 #### And during deployment
 ##### This brief repo highlights some common issues and how you can fix them
 ###### I Hope it saves you a headache!
@@ -19,6 +19,11 @@
 `from django.urls import re_path`
 
 * You can then use re_path the same way you would have used url
+
+* Instead of entirely replacing url with re_path, you can also use:
+
+`from django.urls import re_path as url`
+
 
 ### Couldn't import Django. Are you sure it's installed and available on your PYTHONPATH environment variable?
 
