@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 import datetime as dt
@@ -23,7 +24,7 @@ def news_of_day(request):
 
             send_welcome_email(name,email)
 
-            HttpResponseRedirect('news_today')
+        HttpResponseRedirect('news_today')
     else:
         form = NewsLetterForm()
 
@@ -65,6 +66,7 @@ def search_results(request):
         return render(request,'all-news/search.html',{"message":message})
 
 
+@login_required(login_url='/accounts/login')
 def article(request,article_id):
     try:
         article = Article.objects.get(id=article_id)
