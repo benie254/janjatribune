@@ -21,7 +21,7 @@ urlpatterns = [
     path('',include('news.urls')),
     path('accounts/',include('django.contrib.auth.urls')),
     # path('accounts/',include('django_registration.backends.simple.urls')),
-    path('accounts/',include('django_registration.backends.one_step.urls')),
+    path('accounts/',include('django_registration.backends.one_step')),
     # path('accounts/',include('django_registration.backends.activation.urls')),
     # path('accounts/',include('django_registration_complete.backends.activation.urls')),
     # path('accounts/',include('django_registration_activate.backends.activation.urls')),
