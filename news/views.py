@@ -3,11 +3,26 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 import datetime as dt
 from .models import Article,Subscriber
-from .forms import NewsLetterForm
+from .forms import NewsLetterForm,ArticleForm
 from .email import send_welcome_email
 
 
 # Create your views here.
+@login_required(login_url='/accounts/login/')
+def new_article(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ArticleForm(request.POST,request.FILES)
+        if form.is_valid():
+            article = form.save(commit=False)
+            article.editor = current_user
+            article.save()
+        return redirect('NewsToday')
+    else:
+        form = ArticleForm()
+
+    return render(request,'new_article.html',{"form":form})
+
 
 def news_of_day(request):
     date = dt.date.today()
