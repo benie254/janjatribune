@@ -1,0 +1,11 @@
+Hello, {{name}}!
+
+Welcome to the Moringa Tribune newsletter,
+your most exciting stop for news about Moringa School.
+
+Cheers!
+
+
+Editors,
+
+The Moringa Tribune.

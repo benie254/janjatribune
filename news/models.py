@@ -59,3 +59,8 @@ class Article(models.Model):
     # except DoesNotExist:
     #     print('Editor was not found')
     #
+
+
+class Subscriber(models.Model):
+    name = models.CharField(max_length=30)
+    email = models.EmailField()
