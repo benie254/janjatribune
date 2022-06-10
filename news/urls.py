@@ -9,7 +9,8 @@ urlpatterns = [
     re_path(r'^archives/(\d{4}-\d{2}-\d{2})/$',views.past_days_news,name='pastNews'),
     path('search/',views.search_results,name='search_results'),
     re_path(r'^article/(\d+)$',views.article,name='article'),
-    path('news/article',views.new_article,name='newArticle')
+    path('news/article',views.new_article,name='newArticle'),
+    path('ajax/newsletter',views.newsletter,name='newsletter'),
 
 ]
 
