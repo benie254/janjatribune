@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
-from django.http import HttpResponse,Http404,HttpResponseRedirect
+from django.http import HttpResponse,Http404,HttpResponseRedirect,JsonResponse
 import datetime as dt
 from .models import Article,Subscriber
 from .forms import NewsLetterForm,ArticleForm
@@ -27,23 +27,20 @@ def new_article(request):
 def news_of_day(request):
     date = dt.date.today()
     news = Article.todays_news()
-
-    if request.method == 'POST':
-        form = NewsLetterForm(request.POST)
-        if form.is_valid():
-            print('valid!')
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
-            subscriber = Subscriber(name=name,email=email)
-            subscriber.save()
-
-            send_welcome_email(name,email)
-
-        HttpResponseRedirect('newsToday')
-    else:
-        form = NewsLetterForm()
+    form = NewsLetterForm()
 
     return render(request,'all-news/today-news.html',{"date":date,"news":news,"letterForm":form})
+
+
+def newsletter(request):
+    name = request.POST.get('your_name')
+    email = request.POST.get('email')
+
+    recipient = Subscriber(name=name,email=email)
+    recipient.save()
+    send_welcome_email(name,email)
+    data = {'success':'You have been successfully added to the mailing list'}
+    return JsonResponse(data)
 
 
 def past_days_news(request,past_date):
