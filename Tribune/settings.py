@@ -84,6 +84,7 @@ INSTALLED_APPS = [
     # 'news.apps.NewsConfig',
     'bootstrap3',
     'tinymce',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

@@ -17,7 +17,7 @@ def new_article(request):
             article = form.save(commit=False)
             article.editor = current_user
             article.save()
-        return redirect('NewsToday')
+        return redirect('newsToday')
     else:
         form = ArticleForm()
 
@@ -39,7 +39,7 @@ def news_of_day(request):
 
             send_welcome_email(name,email)
 
-        HttpResponseRedirect('news_today')
+        HttpResponseRedirect('newsToday')
     else:
         form = NewsLetterForm()
 

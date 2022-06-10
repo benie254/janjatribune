@@ -6,7 +6,7 @@
 <div class="container">
     <form action="{%url 'newsToday'%}" method="post">
         {%csrf_token%}
-        {%bootstrap_form letterForm layout='inline'%}
+        {{letterForm}}
         <input type="submit" value="Subscribe">
     </form>
 
@@ -49,4 +49,9 @@
 
     {%endfor%}
 </div>
+{%endblock%}
+
+{%block scripts%}
+{{block.super}}
+<script type="text/javascript" src="{%static 'js/"></script>
 {%endblock%}
