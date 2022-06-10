@@ -11,6 +11,7 @@ urlpatterns = [
     re_path(r'^article/(\d+)$',views.article,name='article'),
     path('news/article',views.new_article,name='newArticle'),
     path('ajax/newsletter',views.newsletter,name='newsletter'),
+    path('api/merch/',views.MerchList.as_view()),
 
 ]
 
