@@ -43,6 +43,13 @@ def newsletter(request):
     return JsonResponse(data)
 
 
+class MerchList(APIView):
+    def get(self,request,format=None):
+        all_merch = MoringaMerch.objects.all()
+        serializers = MerchSerializer(all_merch,many=True)
+        return Response(serializers.data)
+
+
 def past_days_news(request,past_date):
 
     try:
