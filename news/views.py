@@ -10,6 +10,7 @@ from rest_framework.views import APIView
 from .models import MoringaMerch
 from .serializer import MerchSerializer
 from rest_framework import status
+from .permissions import IsAdminOrReadOnly
 
 
 # Create your views here.
@@ -49,6 +50,7 @@ def newsletter(request):
 
 
 class MerchList(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
     def get(self,request,format=None):
         all_merch = MoringaMerch.objects.all()
         serializers = MerchSerializer(all_merch,many=True)
@@ -60,6 +62,8 @@ class MerchList(APIView):
             serializers.save()
             return Response(serializers.data,status=status.HTTP_201_CREATED)
         return Response(serializers.errors,status=status.HTTP_400_BAD_REQUEST)
+
+
 
 
 def past_days_news(request,past_date):
